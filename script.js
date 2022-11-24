@@ -27,6 +27,7 @@ saveBtn.on("click" , function()
 
 // gets any user input that was saved in localStorage and displays in corresponding textarea
 var timeBlock = $(".time-block");
+
 timeBlock.each(function ()
 {
   var timeBlockId = $(this).attr("id");
@@ -37,6 +38,7 @@ timeBlock.each(function ()
 
 //changes the times blocks id from string to number and compares it to current time to add or remove classes that change color.
 var currentHour = dayjs().hour();
+
 timeBlock.each(function ()
 {
 
@@ -49,17 +51,19 @@ timeBlock.each(function ()
   }
   else if (timeBlockHour === currentHour)
   {
-    $(this).removeClass("past");
     $(this).addClass("present");
   }
   else
   {
-    $(this).removeClass("past");
-    $(this).removeClass("present");
     $(this).addClass("future");
   }
 
-});
+})
+
+
+
+
+
 // clears local storage and reloads page on click
 var clearBtn = $("#clearBtn");
 clearBtn.on("click", function ()
@@ -68,6 +72,11 @@ clearBtn.on("click", function ()
   location.reload();
 
 })
+// reloads page every 5min
+setInterval(function(){
+  location.reload();
+}, 300000);
+
 
 // updates time every second
 displayTime()
